@@ -1,0 +1,39 @@
+.todo-container{
+    margin: auto;
+    padding:2rem;
+    background-color: rgb(14, 58, 23);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+.todo-list{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    background-color: azure;
+    padding: 1.5rem;
+}
+
+.delete-todo{
+    display: flex;
+    gap: 5rem;
+    justify-content: space-between;
+   
+}
+
+.title{
+ 
+}
+.edit-delete{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}

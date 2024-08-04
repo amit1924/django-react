@@ -1,0 +1,91 @@
+python -m django startproject todo_backend
+cd todo_backend
+python manage.py startapp todos
+
+Run migrations to set up the database:
+
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+python manage.py createsuperuser
+
+http://127.0.0.1:8000/admin/
+
+http://127.0.0.1:8000/api/
+
+Api Root
+
+Api Root
+The default basic root view for DefaultRouter
+
+GET /api/
+HTTP 200 OK
+Allow: GET, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+{
+    "todos": "http://127.0.0.1:8000/api/todos/"
+}
+
+
+pip install django-cors-headers
+
+INSTALLED_APPS = [
+    ...
+    'corsheaders',
+    ...
+]
+
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    ...
+]
+
+
+
+
+////////////////////////////////
+# Creating a new todo item
+new_todo = Todo(title="Buy groceries")
+new_todo.save()  # This saves the item to the database
+
+# Checking the title and completion status
+print(new_todo.title)       # Output: Buy groceries
+print(new_todo.completed)   # Output: False
+
+# Marking the todo item as completed
+new_todo.completed = True
+new_todo.save()  # Save the updated status
+
+# Outputting the string representation
+print(new_todo)  # Output: Buy groceries
+
+////////////////////////////////////////////////////////////////
+Serializing the Todo Instance
+Now, you can use the TodoSerializer to serialize this instance into JSON format:
+
+
+from .serializers import TodoSerializer
+
+# Create a serializer instance with the todo_instance
+serializer = TodoSerializer(todo_instance)
+
+# Get the serialized data
+serialized_data = serializer.data
+
+# Output the serialized data
+print(serialized_data)
+Output:
+
+json
+Copy code
+{
+    "id": 1,                    # Auto-generated ID from the database
+    "title": "Buy groceries",
+    "completed": false
+}
